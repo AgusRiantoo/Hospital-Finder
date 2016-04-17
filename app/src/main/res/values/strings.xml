@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Hospital Finder</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="satelite">Satelite</string>
+    <string name="terain">Terain</string>
+    <string name="normal">Normal</string>
+    <string name="hybrid">Hybrid</string>
+
+    <string name="action_search">Search</string>
+</resources>
