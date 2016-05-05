@@ -20,6 +20,8 @@
     <string name="find">Hospital</string>
     <string name="about">About</string>
     <string name="exit">Exit</string>
+    <string name="title_activity_hospital">Hospital Name</string>
+    <string name="action_settings">Settings</string>
 
 
 </resources>

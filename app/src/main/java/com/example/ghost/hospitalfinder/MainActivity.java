@@ -2,6 +2,7 @@ package com.example.ghost.hospitalfinder;
 
 import android.Manifest;
 import android.app.SearchManager;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -117,13 +118,10 @@ public class MainActivity extends AppCompatActivity
         SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
-
         return true;
     }
 
-    //a
 
-    //a
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -157,9 +155,9 @@ public class MainActivity extends AppCompatActivity
             Snackbar.make(findViewById(R.id.fab), "Tombol Home", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
 
-        } else if (id == R.id.nav_find) {
-            Snackbar.make(findViewById(R.id.fab), "Tombol Find Hospital", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+        } else if (id == R.id.nav_hospital) {
+            Intent intent = new Intent(this, Hospital.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_about) {
             Snackbar.make(findViewById(R.id.fab), "Tombol About", Snackbar.LENGTH_LONG)
@@ -259,8 +257,8 @@ public class MainActivity extends AppCompatActivity
             Double a = mLastLocation.getLatitude();
             Double b = mLastLocation.getLongitude();
 
-            LatLng sydney = new LatLng(a, b);
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+            LatLng me = new LatLng(a, b);
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(me));
             mMap.moveCamera(CameraUpdateFactory.zoomTo(17));
         }
     }
