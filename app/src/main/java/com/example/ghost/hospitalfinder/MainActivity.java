@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     public Double latitude;
     public Double longitude;
+    public String myLocation;
     SupportMapFragment sMapFragment;
     GoogleApiClient mGoogleApiClient;
     private GoogleMap mMap;
@@ -158,29 +159,10 @@ public class MainActivity extends AppCompatActivity
                     .setAction("Action", null).show();
 
         } else if (id == R.id.nav_hospital) {
-
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return true;
-            }
-            Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
-                    mGoogleApiClient);
-            if (mLastLocation != null) {
-
-                latitude = mLastLocation.getLatitude();
-                longitude = mLastLocation.getLongitude();
-                String mylocation = latitude + "," + longitude;
-
-                Intent intent = new Intent(this, FeedListActivity.class);
-                intent.putExtra("location", mylocation);
-                startActivity(intent);
-            }
+            MyLocation();
+            Intent intent = new Intent(this, FeedListActivity.class);
+            intent.putExtra("location", myLocation);
+            startActivity(intent);
 
         } else if (id == R.id.nav_about) {
             Intent intent = new Intent(this, Detail.class);
@@ -196,11 +178,36 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    private void MyLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
+        if (mLastLocation != null) {
+
+            latitude = mLastLocation.getLatitude();
+            longitude = mLastLocation.getLongitude();
+            myLocation = latitude + "," + longitude;
+
+        }
+
+    }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
         mMap.setOnMyLocationButtonClickListener(this);
+
+
         enableMyLocation();
 
     }
