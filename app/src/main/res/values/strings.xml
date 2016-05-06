@@ -10,7 +10,7 @@
     <string name="hybrid">Hybrid</string>
 
     <string name="action_search">Search</string>
-    <string name="search_hint">Search...</string>
+    <string name="search_hint">Search..</string>
     <string name="location_permission_denied">Permission Denied</string>
     <string name="permission_required_toast">Toast Not Found</string>
     <string name="permission_rationale_location">Failed</string>
@@ -21,7 +21,17 @@
     <string name="about">About</string>
     <string name="exit">Exit</string>
     <string name="title_activity_hospital">Hospital Name</string>
-    <string name="action_settings">Settings</string>
+    <string name="reload">Reload</string>
+    <string name="title_detail_hospital">Detail Hospital</string>
 
+    <string name="hospital_list">Hospital List</string>
+    <string name="hospital">Hospital</string>
 
+    <!--Detail-->
+    <string name="t_address">Address</string>
+    <string name="c_address">Jalan Let. Jend. T.B. Simatupang No.30 Simatupang No.30</string>
+    <string name="t_call">Phone Number</string>
+    <string name="c_call">+6221 8401127</string>
+    <string name="t_web">Website</string>
+    <string name="c_web">www.google.com</string>
 </resources>

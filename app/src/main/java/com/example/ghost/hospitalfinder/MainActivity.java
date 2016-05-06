@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity
         ActivityCompat.OnRequestPermissionsResultCallback {
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+    public Double latitude;
+    public Double longitude;
     SupportMapFragment sMapFragment;
     GoogleApiClient mGoogleApiClient;
     private GoogleMap mMap;
@@ -156,12 +158,33 @@ public class MainActivity extends AppCompatActivity
                     .setAction("Action", null).show();
 
         } else if (id == R.id.nav_hospital) {
-            Intent intent = new Intent(this, Hospital.class);
-            startActivity(intent);
+
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return true;
+            }
+            Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                    mGoogleApiClient);
+            if (mLastLocation != null) {
+
+                latitude = mLastLocation.getLatitude();
+                longitude = mLastLocation.getLongitude();
+                String mylocation = latitude + "," + longitude;
+
+                Intent intent = new Intent(this, FeedListActivity.class);
+                intent.putExtra("location", mylocation);
+                startActivity(intent);
+            }
 
         } else if (id == R.id.nav_about) {
-            Snackbar.make(findViewById(R.id.fab), "Tombol About", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+            Intent intent = new Intent(this, Detail.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_exit) {
             Snackbar.make(findViewById(R.id.fab), "Tombol Exit", Snackbar.LENGTH_LONG)
@@ -200,6 +223,7 @@ public class MainActivity extends AppCompatActivity
         Toast.makeText(this, "Finding Location...", Toast.LENGTH_SHORT).show();
         // Return false so that we don't consume the event and the default behavior still occurs
         // (the camera animates to the user's current position).
+
         return false;
     }
 
@@ -254,10 +278,9 @@ public class MainActivity extends AppCompatActivity
                 mGoogleApiClient);
         if (mLastLocation != null) {
 
-            Double a = mLastLocation.getLatitude();
-            Double b = mLastLocation.getLongitude();
-
-            LatLng me = new LatLng(a, b);
+            latitude = mLastLocation.getLatitude();
+            longitude = mLastLocation.getLongitude();
+            LatLng me = new LatLng(latitude, longitude);
             mMap.moveCamera(CameraUpdateFactory.newLatLng(me));
             mMap.moveCamera(CameraUpdateFactory.zoomTo(17));
         }

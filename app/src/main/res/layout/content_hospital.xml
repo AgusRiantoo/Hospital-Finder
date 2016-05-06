@@ -5,134 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.ghost.hospitalfinder.Hospital"
-    tools:showIn="@layout/activity_hospital">
+    tools:context="com.example.ghost.hospitalfinder.Detail">
 
-
-    <TableLayout
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view_friend"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="36dp"
-        android:padding="16dp">
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardUseCompatPadding="true">
 
-        <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_marginBottom="16dp"-->
-        <!--android:orientation="vertical">-->
-
-        <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/app_name"-->
-        <!--android:textSize="26dp" />-->
-        <!--</LinearLayout>-->
-
-        <TableRow
-            android:id="@+id/row_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp">
 
             <ImageView
-                android:id="@+id/btn_address"
+                android:id="@+id/h_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:src="@drawable/ic_menu_hospital" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/alamat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Alamat"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:text="Address"
-                    android:textSize="16dp" />
-
-            </LinearLayout>
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/row_call"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/btn_call"
+            <TextView
+                android:id="@+id/t_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_call" />
+                android:layout_toRightOf="@id/h_icon"
+                android:text="@string/t_address" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/call"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="021-612 343 334"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:text="Phone Number"
-                    android:textSize="16dp" />
-
-            </LinearLayout>
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/row_web"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/btn_website"
+            <TextView
+                android:id="@+id/c_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_place" />
+                android:layout_below="@id/t_address"
+                android:layout_toRightOf="@id/h_icon"
+                android:text="@string/c_address"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/website"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="www.google.com"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:text="Website"
-                    android:textSize="16dp" />
-
-            </LinearLayout>
-
-        </TableRow>
-
-    </TableLayout>
 
 </android.support.v4.widget.NestedScrollView>
